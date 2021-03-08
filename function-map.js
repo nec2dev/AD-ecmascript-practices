@@ -2,10 +2,10 @@ console.log('Función .map():');
 
 let deportes = [{
     titulo: 'Fútbol',
-    nivel: 'niños'
+    nivel: 'Niños'
 },
 {   titulo: 'Tenis',
-    nivel: 'jóvenes'
+    nivel: 'Jóvenes'
 },
 {   titulo: 'Fútbol',
     nivel: 'Adultos'
@@ -13,8 +13,11 @@ let deportes = [{
 
 let agregarLugar = deportes.map((deporte, index) => {
     if(index === 1){
-        deporte.lugar = estadio;
-        return deporte;
+        deporte.lugar = 'estadio';
+    }
+    if(index === 2){
+        deporte.nivel = 'Jóvenes';
     }  
+        return deporte;  
 })
 console.log('Agregar un lugar', agregarLugar);
