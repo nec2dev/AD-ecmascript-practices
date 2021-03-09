@@ -10,7 +10,7 @@ function holaMundo(){
 holaMundo();*/
 
 /*Funciones flecha sin recibir parámetros*/
-const holaMundo = ()=>{
+const holaMundo = () => {
     console.log('Hello World')
 }
 holaMundo();
