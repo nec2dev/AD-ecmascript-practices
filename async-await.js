@@ -1,6 +1,6 @@
-console.log('Promesas:');
-/*Promises: nos permiten ejecutar un trabajo ya sea síncrono o
-asíncrono después de que se realiza una tarea anterior*/
+console.log('Async - Await:');
+/*Async - Await:: nos simplifica el código para ejecutar promesas
+asíncronas con una sola respuesta correcta*/
 
 let reservaDestino = [{
     id: 1,
@@ -70,30 +70,16 @@ let getAsiento = id => {
     })
 }
 
-/*Tareas sincrónicas: Tareas que se ejecutan al mismo tiempo*/
-/*Tareas asincrónicas: Tareas que se ejecutan en diferente
- tiempo, en este caso, una tarea espera la ejecución de la otra*/
+/*Respuestas de las tareas asíncronascon Async - Await*/
 
-/*respuesta de la primer tarea*/
-getDestino(2).then(destinoDB => {
-    console.log(`Tu destino será: ${destinoDB.destino}`)
+let informeReserva = async(idDestino, idDia, idAsiento) => {
+    let informeDestino = await getDestino(idDestino);
+    let informeDia = await getDia(idDia);
+    let informeAsiento = await getAsiento(idAsiento);
 
-    /*respuesta de la segunda tarea*/
-    getDia(1).then(diaDB => {
-        console.log(`Tu día será: ${diaDB.dia}`)
+    return `Tu destino será: ${informeDestino.destino}, Tu día será: ${informeDia.dia}, Tu asiento será: ${informeAsiento.asiento}`
+}
 
-        /*respuesta de la tercer tarea*/
-        getAsiento(3).then(asientoDB => {
-            console.log(`Tu día será: ${asientoDB.asiento}`)
-
-        }).catch(err => {
-            console.log('error: ', err);
-        })
-
-    }).catch(err => {
-        console.log('error: ', err);
-    })
-
-}).catch(err => {
-    console.log('error: ', err)
-});
+informeReserva(1, 2, 3)
+    .then(mensaje => console.log(mensaje))
+    .catch(err => console.log(err));
